@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="c_fn">
+        
+
+        </div>
+    </div>
+    
+</body>
+
+<script>
+
+    let sum =0;
+    let n = window.prompt("enter card value");
+
+    let car_id=document.getElementById('c_fn');
+
+
+    for(let i=0;i<n;i++){
+
+        sum +=i;
+
+        car_id.innerHTML+=`
+        
+        <div class="col-3 mt-5 ">
+        <div class="card shadow" >
+  <img  src="https://w0.peakpx.com/wallpaper/780/27/HD-wallpaper-the-little-farm-apple-farm-fall-autumn-cottage.jpg" class="img-fluid " alt="...">
+
+  <div class="card-body">
+    
+    <h5 class="card-title text">Apple tree</h5>
+    <p class="card-text">Apple trees are small to medium-sized deciduous trees with oval-shaped leaves, white or pink flowers, and apples. .</p>
+    
+   
+  </div>
+</div>`
+       
+
+
+    }
+
+</script>
+
+
+</html>
