@@ -321,7 +321,7 @@ function show(data){
                     </div>
                     <hr>    
             <div class="text-center">
-                <a class="btn w-50" style="background-color:#dec7b5">more</a>
+                <a class="btn w-50" style="background-color:#dec7b5">add to cart</a>
             </div>
         </div>
         </div>
