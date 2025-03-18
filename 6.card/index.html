@@ -10,20 +10,65 @@
 
 </head>
 <body>
+<!----------------------------------------------------------navbar  section start--------------------------------------------------------------------------------------- -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">HG Mall</a>
 
-    <div class="container mt-5">
+        <form id="search" class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchText">
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+
+          <input style="width: 200px;" class="form-control me-2 bg-light" type="search" placeholder="Search" aria-label="Search" id="advSearch" />
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            🛒
+          </button>
+         
+        </div>
+      </nav>
+
+      <!----------------------------------------------------------navbar  section end--------------------------------------------------------------------------------------- -->
+
+
+
+      <!----------------------------------------------------------offcanvas section start--------------------------------------------------------------------------------------- -->
+
+
+
+
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+            Add to Cart
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="row g-2" id="cart-body">
+
+            </div>
+
+        
+        </div>
+      </div>
+
+<!----------------------------------------------------------offcanvas section end--------------------------------------------------------------------------------------- -->
+
+    <div class="container" style="margin-top:80px;">
         <div class="row gx-4 ">
             <div class="col ">
 
-                <button onclick="all()" class="btn btn-sm mb-2 me-2" style="background-color: #e6d4c6;" id="p">All</button>
-                <button onclick="electronics()" class="btn btn-sm mb-2 me-2" style="background-color: #e6d4c6;">Electronicc</button>
-                <button onclick="mens()" class="btn  btn-sm mb-2 me-2" style="background-color: #e6d4c6;">Mens</button>
-                <button onclick="womens()" class="btn  btn-sm mb-2 me-2" style="background-color: #e6d4c6;">Womens</button>
-                <button onclick="jewelery()" class="btn   btn-sm mb-2 me-2" style="background-color: #e6d4c6;">Jewelery</button>
+                <button onclick="all()" class="btn btn-sm mb-2 me-2 fs-6" style="background-color: #e6d4c6;" id="p">All</button>
+                <button onclick="electronics()" class="btn btn-sm mb-2 me-2 fs-6" style="background-color: #e6d4c6;">Electronicc</button>
+                <button onclick="mens()" class="btn  btn-sm mb-2 me-2 fs-6" style="background-color: #e6d4c6;">Mens</button>
+                <button onclick="womens()" class="btn  btn-sm mb-2 me-2 fs-6" style="background-color: #e6d4c6;">Womens</button>
+                <button onclick="jewelery()" class="btn   btn-sm mb-2 me-2 fs-6" style="background-color: #e6d4c6;">Jewelery</button>
             </div>
             <div class="col d-flex justify-content-end gap-3">
-                <button onclick="pricehigh()" class="btn btn-sm" style="background-color: #e6d4c6;">Price <span><i class="ri-arrow-up-long-fill"></i></span></button>
-                <button onclick="pricelow()" class="btn btn-sm" style="background-color: #e6d4c6;">Price <span><i class="ri-arrow-down-long-fill"></i></span></button>
+                <button onclick="pricehigh()" class="btn btn-sm fs-6" style="background-color: #e6d4c6;">Price <span><i class="ri-arrow-up-long-fill"></i></span></button>
+                <button onclick="pricelow()" class="btn btn-sm fs-6" style="background-color: #e6d4c6;">Price <span><i class="ri-arrow-down-long-fill"></i></span></button>
             </div>
         </div>
     </div>

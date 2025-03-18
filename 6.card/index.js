@@ -243,8 +243,17 @@ let data =[
 
 
 
+let cart = JSON.parse(localStorage.getItem("cart")) || []
 
 let row = document.getElementById("row")
+
+let cartBody = document.getElementById("cart-body")
+
+function setLocal(c){
+
+    localStorage.setItem("cart",JSON.stringify(c))
+    showCart()
+}
 
 function all(){
    location.reload()
@@ -288,12 +297,67 @@ function  pricelow(){
     show(newdata)
 
 }
+function handleCart(id){
+
+    let item = data.find((ele) =>ele.id == id)
+
+    cart.push(item)
+
+    setLocal(cart)
+
+
+}
+
+function deleteCart(i){
+
+
+  let newitem = cart.filter((el) => el.id != i)
+
+  setLocal(newitem)
+  // show(data)
+
+  location.reload()
+
+}
 
 
 
 
 
 document.getElementById('p').addEventListener("click",all)
+
+
+
+search.addEventListener("submit", function(e){
+ 
+  e.preventDefault();
+
+  let searchText = document.getElementById("searchText")
+
+  console.log(searchText.value)
+
+  let newData = data.filter((ele) => ele.title.toLocaleUpperCase().includes(searchText.value.toLocaleUpperCase()) || ele.category.toLocaleUpperCase().includes(searchText.value.toLocaleUpperCase())  )
+
+  show(newData)
+})
+
+
+
+let advSearch = document.getElementById("advSearch")
+
+advSearch.addEventListener("keyup", function(e){
+
+console.log(e.target.value)
+
+let searchText = e.target.value
+
+let newData = data.filter((ele) => ele.title.toLocaleUpperCase().includes(searchText.toLocaleUpperCase()) || ele.category.toLocaleUpperCase().includes(searchText.toLocaleUpperCase())  )
+
+show(newData)
+})
+
+
+
 
 
 function show(data){
@@ -321,14 +385,46 @@ function show(data){
                     </div>
                     <hr>    
             <div class="text-center">
-                <a class="btn w-50" style="background-color:#dec7b5">add to cart</a>
+                <a onclick="handleCart(${ele.id})" class="btn w-50" style="background-color:#dec7b5">Add to cart</a>
             </div>
         </div>
         </div>
         </div>`
     })
 
-    // if(ele. == "")
+  
 }
 
 show(data)
+
+function showCart(){
+  cartBody.innerHTML="";
+  cart.map((el)=>{
+    cartBody.innerHTML += `
+       <div class="col-12">
+                <div class="card h-100">
+                  <div class="row">
+                    <div class="col-4">
+                       <img src=${el.image} height="100px" class="card-img-top border" alt="...">
+                    </div>
+                    <div class="col-8">
+                      <div class="card-body  p-1"> 
+                         <h6 class="card-title">${el.title}</h6> 
+                           <p class="card-text mb-2">${el.category}</p>
+                        <div class="d-flex  justify-content-between">
+                          <span class="badge text-bg-light">$ ${el.price}</span>
+                          <span class="badge text-bg-light">⭐ ${el.rating.rate}</span>
+                        </div>        
+                        <a onclick="deleteCart(${el.id})" class="btn btn-danger btn-sm"><i class="ri-delete-bin-line"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+            </div>
+    `
+  })
+ }
+
+show(data)
+
+showCart()
