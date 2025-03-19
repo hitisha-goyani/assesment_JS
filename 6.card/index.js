@@ -249,6 +249,40 @@ let row = document.getElementById("row")
 
 let cartBody = document.getElementById("cart-body")
 
+let itembody = document.getElementById("itembody")
+
+let total = document.getElementById("total")
+ 
+function handleItem(id){
+  let newItem = data.find((ele) => ele.id==id)
+
+  const {image, title, category, price, rating, description} = newItem
+
+  itembody.innerHTML = `
+        <div class="card h-100  shadow-sm rounded-2 p-1" style="background-color:#f7efec">
+                  <div class="row">
+                    <div class="col-4">
+                       <img src=${image} class="card-img-top border" alt="...">
+                    </div>
+                    <div class="col-8">
+                      <div class="card-body  p-1"> 
+                         <h6 class="card-title">${title}</h6> 
+                           <div class="d-flex  justify-content-between my-2">
+                          <span class="badge text-bg-light">$ ${price}</span>
+                          <span class="badge text-bg-light">⭐ ${rating.rate}</span>
+                        </div>
+                           <p class="card-text mb-2">${category}</p>
+                           <p class="card-text mb-2">${description}</p>
+                        <a onclick="handleCart(${id})" class="btn  w-25 rounded-2" style="background-color:#dec7b5">Add</a>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+  `
+}
+
+
+
 function setLocal(c){
 
     localStorage.setItem("cart",JSON.stringify(c))
@@ -385,7 +419,8 @@ function show(data){
                     </div>
                     <hr>    
             <div class="text-center">
-                <a onclick="handleCart(${ele.id})" class="btn w-50" style="background-color:#dec7b5">Add to cart</a>
+                <a onclick="handleCart(${ele.id})" class="btn w-50 rounded-2" style="background-color:#dec7b5">Add to cart</a>
+                <a onclick="handleItem(${ele.id})" class="btn w-25 rounded-2" style="background-color:#dec7b5"  data-bs-toggle="modal" data-bs-target="#exampleModal">More</a>
             </div>
         </div>
         </div>
@@ -398,11 +433,11 @@ function show(data){
 show(data)
 
 function showCart(){
-  cartBody.innerHTML="";
+  // cartBody.innerHTML="";
   cart.map((el)=>{
     cartBody.innerHTML += `
        <div class="col-12">
-                <div class="card h-100">
+              <div class="card h-100  shadow-sm rounded-2 p-1" style="background-color:#f7efec">
                   <div class="row">
                     <div class="col-4">
                        <img src=${el.image} height="100px" class="card-img-top border" alt="...">
@@ -416,6 +451,7 @@ function showCart(){
                           <span class="badge text-bg-light">⭐ ${el.rating.rate}</span>
                         </div>        
                         <a onclick="deleteCart(${el.id})" class="btn btn-danger btn-sm"><i class="ri-delete-bin-line"></i></a>
+                     <a onclick="handleItem(${el.id})" class="btn  rounded-2" style="background-color:#dec7b5"  data-bs-toggle="modal" data-bs-target="#exampleModal">More</a>
                       </div>
                     </div>
                   </div>
@@ -423,8 +459,33 @@ function showCart(){
             </div>
     `
   })
+
+  total.innerHTML = ` 
+   
+  <div class="container bg-light text-dark rounded-2">
+            <div class="row g-2">
+              <div class="col-4 p-3">
+                Total: <span class="badge p-3 text-" style="background-color:#dec7b5">${cart.reduce(( sum, ele) => ele.price +sum, 0)}</span>
+              </div>
+              <div class="col-4 p-3">
+                offer:
+              </div>
+              <div class="col-4 p-3">item No: ${cart.length}</div>
+            </div>
+        </div>`
  }
 
 show(data)
 
 showCart()
+
+
+
+// let sum =0
+ //  cart.forEach(ele=> {
+ //     sum = sum + ele.price
+ //  });
+ 
+ 
+ let sum = 
+ console.log()
